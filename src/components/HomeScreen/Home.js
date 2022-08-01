@@ -7,7 +7,36 @@ import VoiceSearchBox from './VoiceSearchBox';
 
 const Home = ({ setSearch }) => {
   //controlling form
+  //const [term, setTerm] = useState('');
   const [term, setTerm] = useState('');
+
+ // const[text,setText]=useState('');
+
+  const textHandler=(e)=>{
+    setTerm(e.target.value);
+  }
+  const Uppercase=()=>{
+    let newTerm=term.toUpperCase();
+    setTerm(newTerm);
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   //voice search
   const [isVoiceSearch, setIsVoiceSearch] = useState(false);
@@ -63,7 +92,7 @@ const Home = ({ setSearch }) => {
 
   return (
     <>
-      {isVoiceSearch ? (
+    {isVoiceSearch ? (
         <VoiceSearchBox
           voiceText={voiceText}
           clearVoiceSearch={clearVoiceSearch}
@@ -86,9 +115,22 @@ const Home = ({ setSearch }) => {
                   name="term"
                   id="term"
                   value={term}
-                  onChange={(e) => setTerm(e.target.value)}
+                  onChange={(e) => setTerm(e.target.value,{textHandler})}
                 />
               </form>
+
+             {/* //<textarea rows="3" */}
+             {/* //className='form-control' */}
+             {/* ///id="textarea" */}
+             {/* //placeholder='enter text here' */}
+             {/* //value={text} */}
+             {/* //onChange={textHandler} */}
+
+             {/* //> */}
+
+
+
+
               {term ? (
                 <i className="fa fa-close" onClick={() => clearTerm()}></i>
               ) : (
@@ -103,12 +145,14 @@ const Home = ({ setSearch }) => {
                 type="button"
                 className="btn btn-light mx-1"
                 value="Google Search"
-                onClick={() => handleSearch()}
+                 onClick={() => handleSearch()}
+              
               />
               <input
                 type="button"
                 className="btn btn-light"
-                value="I'm Feeling Lucky"
+                value="clickToUpperCase"//"I'm Feeling Lucky "
+                  onClick={Uppercase}
               />
             </div>
           </div>
